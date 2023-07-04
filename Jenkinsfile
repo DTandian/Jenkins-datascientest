@@ -62,7 +62,7 @@ stages {
 stage('Deploiement en dev'){
         environment
         {
-        KUBECONFIG = credentials("config") // we retrieve  kubeconfig from secret file called config saved on jenkins
+        KUBECONFIG = credentials("config_kub") // we retrieve  kubeconfig from secret file called config saved on jenkins
         }
         //The script creates the .kube directory, copies the config file to the .kube directory, and 
         //modifies the values.yaml file to set the tag value to the $DOCKER_TAG
@@ -85,7 +85,7 @@ stage('Deploiement en dev'){
 stage('Deploiement en staging'){
         environment
         {
-        KUBECONFIG = credentials("config") // we retrieve  kubeconfig from secret file called config saved on jenkins
+        KUBECONFIG = credentials("config_kub") // we retrieve  kubeconfig from secret file called config saved on jenkins
         }
             steps {
                 script {
@@ -107,7 +107,7 @@ stage('Deploiement en staging'){
   stage('Deploiement en prod'){
         environment
         {
-        KUBECONFIG = credentials("config") // we retrieve  kubeconfig from secret file called config saved on jenkins
+        KUBECONFIG = credentials("config_kub") // we retrieve  kubeconfig from secret file called config saved on jenkins
         }
             steps {
             // Create an Approval Button with a timeout of 15minutes.
